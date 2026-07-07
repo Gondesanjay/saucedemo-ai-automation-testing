@@ -1,0 +1,19 @@
+{
+  "name": "tugas-testing-ai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter mochawesome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "selenium-webdriver": "^4.44.0"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.6",
+    "mochawesome": "^7.1.4"
+  }
+}

@@ -1,0 +1,442 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 7,
+    "passes": 3,
+    "pending": 0,
+    "failures": 4,
+    "start": "2026-06-26T13:16:20.494Z",
+    "end": "2026-06-26T13:17:03.760Z",
+    "duration": 43266,
+    "testsRegistered": 7,
+    "passPercent": 42.857142857142854,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f0963ea1-496c-47ad-a2e4-f04ba8c8dd25",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bf4f1dfc-5ad9-4fdc-828a-53b168578aee",
+          "title": "Error Handling & Validation Tests",
+          "fullFile": "C:\\Users\\docto\\OneDrive\\Pictures\\Documents\\KULIAH\\STT NF\\SEMESTER 4\\Jaminan Kualitas Sistem Informasi\\Tugas\\tugas-testing-ai\\test\\01_error_handling.test.js",
+          "file": "\\test\\01_error_handling.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Error Handling & Validation Tests\"",
+              "fullTitle": "Error Handling & Validation Tests \"before each\" hook in \"Error Handling & Validation Tests\"",
+              "timedOut": false,
+              "duration": 2485,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('MicrosoftEdge').build();\nawait driver.manage().window().maximize();\nawait driver.get('https://www.saucedemo.com/');",
+              "err": {},
+              "uuid": "898ed9d9-3b22-49b1-9829-c311c02f5a79",
+              "parentUUID": "bf4f1dfc-5ad9-4fdc-828a-53b168578aee",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Error Handling & Validation Tests\"",
+              "fullTitle": "Error Handling & Validation Tests \"after each\" hook in \"Error Handling & Validation Tests\"",
+              "timedOut": false,
+              "duration": 362,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n    await driver.quit();\n}",
+              "err": {},
+              "uuid": "6dac27bf-ab4c-415a-9108-13700a2f537b",
+              "parentUUID": "bf4f1dfc-5ad9-4fdc-828a-53b168578aee",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Login Akun Diblokir: Memvalidasi error saat login dengan akun locked_out_user",
+              "fullTitle": "Error Handling & Validation Tests Login Akun Diblokir: Memvalidasi error saat login dengan akun locked_out_user",
+              "timedOut": false,
+              "duration": 1700,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(By.id('user-name')).sendKeys('locked_out_user');\nawait driver.findElement(By.id('password')).sendKeys('secret_sauce');\nawait driver.findElement(By.id('login-button')).click();\nlet errorElement = await driver.wait(until.elementLocated(By.css('[data-test=\"error\"]')), 5000);\nlet errorText = await errorElement.getText();\nassert.strictEqual(errorText, 'Epic sadface: Sorry, this user has been locked out.');",
+              "err": {},
+              "uuid": "5ec0452b-a249-47c3-8051-1aec3341ac0a",
+              "parentUUID": "bf4f1dfc-5ad9-4fdc-828a-53b168578aee",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login Tanpa Password: Memvalidasi error saat password dibiarkan kosong",
+              "fullTitle": "Error Handling & Validation Tests Login Tanpa Password: Memvalidasi error saat password dibiarkan kosong",
+              "timedOut": false,
+              "duration": 766,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(By.id('user-name')).sendKeys('standard_user');\nawait driver.findElement(By.id('login-button')).click();\nlet errorElement = await driver.wait(until.elementLocated(By.css('[data-test=\"error\"]')), 5000);\nlet errorText = await errorElement.getText();\nassert.strictEqual(errorText, 'Epic sadface: Password is required');",
+              "err": {},
+              "uuid": "f1af1490-6f8e-408d-9df2-b147c7bfe62b",
+              "parentUUID": "bf4f1dfc-5ad9-4fdc-828a-53b168578aee",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Checkout First Name Kosong: Memvalidasi error saat nama depan tidak diisi",
+              "fullTitle": "Error Handling & Validation Tests Checkout First Name Kosong: Memvalidasi error saat nama depan tidak diisi",
+              "timedOut": false,
+              "duration": 3379,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(By.id('user-name')).sendKeys('standard_user');\n        await driver.findElement(By.id('password')).sendKeys('secret_sauce');\n        await driver.findElement(By.id('login-button')).click();\n        await driver.wait(until.elementLocated(By.id('add-to-cart-sauce-labs-backpack')), 5000).click();\n        await driver.findElement(By.className('shopping_cart_link')).click();\n        await driver.wait(until.elementLocated(By.id('checkout')), 5000).click();\n        await driver.wait(until.elementLocated(By.id('last-name')), 5000).sendKeys('Testing');\n        await driver.findElement(By.id('postal-code')).sendKeys('12345');\n        await driver.findElement(By.id('continue')).click();\n        let errorElement = await driver.wait(until.elementLocated(By.css('[data-test=\"error\"]')), 5000);\n        let errorText = await errorElement.getText();\n        assert.strictEqual(errorText, 'Error: First Name is required');",
+              "err": {},
+              "uuid": "3773b654-84e6-4081-9ed9-7d116e3f3402",
+              "parentUUID": "bf4f1dfc-5ad9-4fdc-828a-53b168578aee",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5ec0452b-a249-47c3-8051-1aec3341ac0a",
+            "f1af1490-6f8e-408d-9df2-b147c7bfe62b",
+            "3773b654-84e6-4081-9ed9-7d116e3f3402"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5845,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "3216cb19-73a7-4df6-8d89-cda26a374447",
+          "title": "Functional Bug Tests (Problem User)",
+          "fullFile": "C:\\Users\\docto\\OneDrive\\Pictures\\Documents\\KULIAH\\STT NF\\SEMESTER 4\\Jaminan Kualitas Sistem Informasi\\Tugas\\tugas-testing-ai\\test\\02_functional_bug.test.js",
+          "file": "\\test\\02_functional_bug.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Functional Bug Tests (Problem User)\"",
+              "fullTitle": "Functional Bug Tests (Problem User) \"before each\" hook in \"Functional Bug Tests (Problem User)\"",
+              "timedOut": false,
+              "duration": 2884,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('MicrosoftEdge').build();\nawait driver.manage().window().maximize();\nawait driver.get('https://www.saucedemo.com/');",
+              "err": {},
+              "uuid": "b925f1c7-8d01-4ff7-acee-db23053df4ea",
+              "parentUUID": "3216cb19-73a7-4df6-8d89-cda26a374447",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Functional Bug Tests (Problem User)\"",
+              "fullTitle": "Functional Bug Tests (Problem User) \"after each\" hook in \"Functional Bug Tests (Problem User)\"",
+              "timedOut": false,
+              "duration": 276,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n    await driver.quit();\n}",
+              "err": {},
+              "uuid": "ee6b553d-7fd5-4402-83ed-7d08ca41e72e",
+              "parentUUID": "3216cb19-73a7-4df6-8d89-cda26a374447",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Bug Broken Image: Memvalidasi gambar produk sesuai dengan namanya",
+              "fullTitle": "Functional Bug Tests (Problem User) Bug Broken Image: Memvalidasi gambar produk sesuai dengan namanya",
+              "timedOut": false,
+              "duration": 1072,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Login menggunakan akun problem_user\nawait driver.findElement(By.id('user-name')).sendKeys('problem_user');\nawait driver.findElement(By.id('password')).sendKeys('secret_sauce');\nawait driver.findElement(By.id('login-button')).click();\n// 2. Menunggu halaman produk dimuat\nawait driver.wait(until.elementLocated(By.id('item_4_img_link')), 5000);\n// 3. Mengambil elemen gambar dari produk pertama (Sauce Labs Backpack)\n// Kita menggunakan selector CSS untuk menargetkan tag <img> di dalam link produk tersebut\nlet imageElement = await driver.findElement(By.css('#item_4_img_link img'));\n// 4. Mengambil nilai atribut 'src' (sumber URL file gambar)\nlet imageSrc = await imageElement.getAttribute('src');\n// 5. Mengecek apakah kata 'backpack' ada di dalam nama file gambar tersebut\nlet isImageCorrect = imageSrc.includes('backpack');\n// 6. Validasi (Assert) - TES INI DIHARAPKAN GAGAL KARENA MUNCUL GAMBAR ANJING\nassert.strictEqual(\n    isImageCorrect,\n    true,\n    `BUG DETECTED: Gambar salah! Diharapkan URL mengandung 'backpack', tapi yang dimuat adalah: ${imageSrc}`\n);",
+              "err": {
+                "message": "AssertionError: BUG DETECTED: Gambar salah! Diharapkan URL mengandung 'backpack', tapi yang dimuat adalah: https://www.saucedemo.com/static/media/sl-404.168b1cce10384b857a6f.jpg\n\nfalse !== true\n",
+                "estack": "AssertionError [ERR_ASSERTION]: BUG DETECTED: Gambar salah! Diharapkan URL mengandung 'backpack', tapi yang dimuat adalah: https://www.saucedemo.com/static/media/sl-404.168b1cce10384b857a6f.jpg\n\nfalse !== true\n\n    at Context.<anonymous> (test\\02_functional_bug.test.js:44:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- false\n+ true\n"
+              },
+              "uuid": "9c823a2d-1a46-40a1-bc82-513498f58872",
+              "parentUUID": "3216cb19-73a7-4df6-8d89-cda26a374447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Bug Sorting Rusak: Memvalidasi fitur urut harga termurah (Low to High)",
+              "fullTitle": "Functional Bug Tests (Problem User) Bug Sorting Rusak: Memvalidasi fitur urut harga termurah (Low to High)",
+              "timedOut": false,
+              "duration": 2420,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Login menggunakan akun problem_user\nawait driver.findElement(By.id('user-name')).sendKeys('problem_user');\nawait driver.findElement(By.id('password')).sendKeys('secret_sauce');\nawait driver.findElement(By.id('login-button')).click();\n// 2. Menunggu dropdown filter muncul di layar\nlet sortDropdown = await driver.wait(until.elementLocated(By.className('product_sort_container')), 5000);\n// 3. Mengklik dropdown filter tersebut\nawait sortDropdown.click();\n// 4. Memilih opsi 'Price (low to high)' yang memiliki value HTML 'lohi'\nlet lohiOption = await driver.findElement(By.css('option[value=\"lohi\"]'));\nawait lohiOption.click();\n// 5. Memberikan jeda waktu 1 detik agar sistem memproses pengurutan\nawait driver.sleep(1000);\n// 6. Mengambil elemen harga dari produk PERTAMA yang muncul di layar setelah diurutkan\nlet firstPriceElement = await driver.findElement(By.className('inventory_item_price'));\nlet firstPriceText = await firstPriceElement.getText();\n// 7. Validasi (Assert) - TES INI DIHARAPKAN GAGAL KARENA SORTING RUSAK\nassert.strictEqual(\n    firstPriceText,\n    '$7.99',\n    `BUG DETECTED: Fitur sorting gagal! Diharapkan harga termurah $7.99, tapi yang di urutan pertama adalah ${firstPriceText}`\n);",
+              "err": {
+                "message": "AssertionError: BUG DETECTED: Fitur sorting gagal! Diharapkan harga termurah $7.99, tapi yang di urutan pertama adalah $29.99\n\n'$29.99' !== '$7.99'\n",
+                "estack": "AssertionError [ERR_ASSERTION]: BUG DETECTED: Fitur sorting gagal! Diharapkan harga termurah $7.99, tapi yang di urutan pertama adalah $29.99\n\n'$29.99' !== '$7.99'\n\n    at Context.<anonymous> (test\\02_functional_bug.test.js:75:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- $29.99\n+ $7.99\n"
+              },
+              "uuid": "b3a76487-f13d-4ff2-b479-ab3646a836f2",
+              "parentUUID": "3216cb19-73a7-4df6-8d89-cda26a374447",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "9c823a2d-1a46-40a1-bc82-513498f58872",
+            "b3a76487-f13d-4ff2-b479-ab3646a836f2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3492,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "166dc4d2-6e56-47ec-84ab-86b97bafbcc9",
+          "title": "State Management Bug Tests",
+          "fullFile": "C:\\Users\\docto\\OneDrive\\Pictures\\Documents\\KULIAH\\STT NF\\SEMESTER 4\\Jaminan Kualitas Sistem Informasi\\Tugas\\tugas-testing-ai\\test\\03_state_management.test.js",
+          "file": "\\test\\03_state_management.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"State Management Bug Tests\"",
+              "fullTitle": "State Management Bug Tests \"before each\" hook in \"State Management Bug Tests\"",
+              "timedOut": false,
+              "duration": 2699,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('MicrosoftEdge').build();\nawait driver.manage().window().maximize();\nawait driver.get('https://www.saucedemo.com/');",
+              "err": {},
+              "uuid": "7598754d-6e89-4947-8968-5f1e28c21b55",
+              "parentUUID": "166dc4d2-6e56-47ec-84ab-86b97bafbcc9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"State Management Bug Tests\"",
+              "fullTitle": "State Management Bug Tests \"after each\" hook in \"State Management Bug Tests\"",
+              "timedOut": false,
+              "duration": 512,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n    await driver.quit();\n}",
+              "err": {},
+              "uuid": "5a946bc3-5ff7-422b-a4da-0cc178ff0d17",
+              "parentUUID": "166dc4d2-6e56-47ec-84ab-86b97bafbcc9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Bug Cart Badge: Memvalidasi sinkronisasi angka keranjang saat barang ditambah dan dihapus",
+              "fullTitle": "State Management Bug Tests Bug Cart Badge: Memvalidasi sinkronisasi angka keranjang saat barang ditambah dan dihapus",
+              "timedOut": false,
+              "duration": 5769,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// 1. Login menggunakan akun problem_user\nawait driver.findElement(By.id('user-name')).sendKeys('problem_user');\nawait driver.findElement(By.id('password')).sendKeys('secret_sauce');\nawait driver.findElement(By.id('login-button')).click();\n// Menunggu halaman produk dimuat sepenuhnya\nawait driver.wait(until.elementLocated(By.className('inventory_list')), 5000);\nawait driver.sleep(1000); // Jeda visual 1 detik untuk video\n// 2. Klik tombol 'Add to cart' pada produk pertama (Backpack)\nlet firstItemAddBtn = await driver.findElement(By.id('add-to-cart-sauce-labs-backpack'));\nawait firstItemAddBtn.click();\nawait driver.sleep(1000); // Jeda visual 1 detik\n// 3. Klik tombol 'Add to cart' pada produk kedua (Bike Light)\nlet secondItemAddBtn = await driver.findElement(By.id('add-to-cart-sauce-labs-bike-light'));\nawait secondItemAddBtn.click();\nawait driver.sleep(1000); // Jeda visual 1 detik\n// 4. Validasi angka pada badge keranjang harus bernilai '2'\nlet badgeElement = await driver.findElement(By.className('shopping_cart_badge'));\nlet badgeText = await badgeElement.getText();\n// Assert pertama: Memastikan barang berhasil masuk (Biasanya lolos)\nassert.strictEqual(\n    badgeText,\n    '2',\n    `Ekspektasi gagal: Diharapkan badge bernilai 2, tapi yang muncul adalah ${badgeText}`\n);\n// 5. Selanjutnya, klik tombol 'Remove' pada produk pertama untuk menghapusnya\n// Catatan: Pada produk pertama, tombol 'Add to cart' tadi sudah berubah ID-nya menjadi 'remove'\nlet firstItemRemoveBtn = await driver.findElement(By.id('remove-sauce-labs-backpack'));\nawait firstItemRemoveBtn.click();\nawait driver.sleep(1500); // Jeda visual 1,5 detik agar terekam di video\n// 6. Mengambil ulang teks dari badge keranjang setelah penghapusan\nbadgeElement = await driver.findElement(By.className('shopping_cart_badge'));\nlet newBadgeText = await badgeElement.getText();\n// 7. Validasi (Assert) - TES INI DIHARAPKAN GAGAL KARENA BUG STATE MANAGEMENT\nassert.strictEqual(\n    newBadgeText,\n    '1',\n    `BUG DETECTED: Sinkronisasi keranjang rusak! Diharapkan badge menjadi 1 setelah barang dihapus, tapi nyatanya angka tetap ${newBadgeText}`\n);",
+              "err": {
+                "message": "AssertionError: BUG DETECTED: Sinkronisasi keranjang rusak! Diharapkan badge menjadi 1 setelah barang dihapus, tapi nyatanya angka tetap 2\n\n'2' !== '1'\n",
+                "estack": "AssertionError [ERR_ASSERTION]: BUG DETECTED: Sinkronisasi keranjang rusak! Diharapkan badge menjadi 1 setelah barang dihapus, tapi nyatanya angka tetap 2\n\n'2' !== '1'\n\n    at Context.<anonymous> (test\\03_state_management.test.js:66:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": "- 2\n+ 1\n"
+              },
+              "uuid": "9f1679df-57e4-4ad1-b133-4b77fae2017c",
+              "parentUUID": "166dc4d2-6e56-47ec-84ab-86b97bafbcc9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "9f1679df-57e4-4ad1-b133-4b77fae2017c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 5769,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "be12c0ae-7a89-49f0-bc0a-91968293fe3c",
+          "title": "Performance & Timeout Tests",
+          "fullFile": "C:\\Users\\docto\\OneDrive\\Pictures\\Documents\\KULIAH\\STT NF\\SEMESTER 4\\Jaminan Kualitas Sistem Informasi\\Tugas\\tugas-testing-ai\\test\\04_performance.test.js",
+          "file": "\\test\\04_performance.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Performance & Timeout Tests\"",
+              "fullTitle": "Performance & Timeout Tests \"before each\" hook in \"Performance & Timeout Tests\"",
+              "timedOut": false,
+              "duration": 2231,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Karena proses membuka browser terkadang butuh waktu, \n// kita beri waktu longgar khusus untuk proses setup ini\nthis.timeout(10000);\ndriver = await new Builder().forBrowser('MicrosoftEdge').build();\nawait driver.manage().window().maximize();\nawait driver.get('https://www.saucedemo.com/');",
+              "err": {},
+              "uuid": "b6336153-4463-4fb0-ac3c-ddbac3b241bd",
+              "parentUUID": "be12c0ae-7a89-49f0-bc0a-91968293fe3c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Performance & Timeout Tests\"",
+              "fullTitle": "Performance & Timeout Tests \"after each\" hook in \"Performance & Timeout Tests\"",
+              "timedOut": false,
+              "duration": 3910,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(10000);\nif (driver) {\n    await driver.quit();\n}",
+              "err": {},
+              "uuid": "d9ab2cf0-3bd7-4937-9a1b-4afe7e545619",
+              "parentUUID": "be12c0ae-7a89-49f0-bc0a-91968293fe3c",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Timeout Detection: Memvalidasi performa login dengan batas waktu 3 detik",
+              "fullTitle": "Performance & Timeout Tests Timeout Detection: Memvalidasi performa login dengan batas waktu 3 detik",
+              "timedOut": true,
+              "duration": 3013,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// PERHATIAN: Mengatur batas waktu (timeout) spesifik HANYA untuk skenario ini sebesar 3000 ms (3 detik)\nthis.timeout(3000);\n// 1. Mengisi form login menggunakan akun yang memiliki masalah performa (lag)\nawait driver.findElement(By.id('user-name')).sendKeys('performance_glitch_user');\nawait driver.findElement(By.id('password')).sendKeys('secret_sauce');\n// 2. Klik tombol login\n// Catatan: Server SauceDemo akan menahan respons klik ini selama kurang lebih 5 detik\nawait driver.findElement(By.id('login-button')).click();\n// 3. Memvalidasi bahwa halaman selanjutnya (inventory) berhasil dimuat\n// KODE DI BAWAH INI TIDAK AKAN PERNAH TERCAPAI.\n// Mocha akan menghentikan paksa tes secara otomatis tepat di detik ke-3 \n// dan mencetak status GAGAL (Timeout Error).\nlet titleElement = await driver.wait(until.elementLocated(By.className('title')), 5000);\nlet titleText = await titleElement.getText();\nassert.strictEqual(titleText, 'Products');",
+              "err": {
+                "message": "Error: Timeout of 3000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\Users\\docto\\OneDrive\\Pictures\\Documents\\KULIAH\\STT NF\\SEMESTER 4\\Jaminan Kualitas Sistem Informasi\\Tugas\\tugas-testing-ai\\test\\04_performance.test.js)",
+                "estack": "Error: Timeout of 3000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\Users\\docto\\OneDrive\\Pictures\\Documents\\KULIAH\\STT NF\\SEMESTER 4\\Jaminan Kualitas Sistem Informasi\\Tugas\\tugas-testing-ai\\test\\04_performance.test.js)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)",
+                "diff": null
+              },
+              "uuid": "c2867946-5c0e-456b-86d3-61c9ed9bf909",
+              "parentUUID": "be12c0ae-7a89-49f0-bc0a-91968293fe3c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "c2867946-5c0e-456b-86d3-61c9ed9bf909"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3013,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.6"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
